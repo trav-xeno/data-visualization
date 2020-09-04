@@ -9,6 +9,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
+        .m {
+            margin-bottom: 16px;
+        }
        
     </style>
 </head>
@@ -21,8 +24,18 @@
           </nav>
     </header>
     <main class="container">
-        <div class="row">
-            <div class="col s12"> <svg id="chart"></svg></div>
+        <div class="row m">
+            <div class="col s12"> <svg id="start"></svg></div>
+        </div>
+        <div class="row"> 
+            <div class="col s12 m" >   
+                <button class="btn waves-effect waves-light" id="btn">Change width</button> 
+            </div>
+            <div class="col s12">
+                <svg id="chart">
+                    <rect></rect>
+                </svg>
+            </div>
         </div>
     </main>
      
