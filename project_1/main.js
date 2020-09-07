@@ -7,7 +7,7 @@ document.getElementById("btn").addEventListener("click", () => {
     data3: [{ width: 50, fill: "#770e96", value: 0.5 }],
     data4: [{ width: 350, fill: "blue", value: 3.5 }],
   };
-  const chartCanvas = d3.select("#chart");
+  const chartCanvas = d3.select("#clickTest");
   const rect = chartCanvas.select("rect");
   // test and loop trhough data...this is the only way to pass data to one rect
   switch (count) {
@@ -95,7 +95,7 @@ const fillStartSvg = () => {
 
 const clickDemo = () => {
   const chartCanvas = d3
-    .select("#chart")
+    .select("#clickTest")
     .attr("height", 600)
     .attr("width", 500);
   const rect = chartCanvas.select("rect");
@@ -110,7 +110,34 @@ const clickDemo = () => {
     .style("font-size", "25px");
 };
 
+
+
+const barChart = () => {
+      const svg = d3.select("#barChart") ;
+      const yScale = d3.scaleLinear().domain([0,1000]).range([0,500]);
+      console.log(yScale(500));
+
+    d3.json("barData.json").then( res => {
+        const rects =  svg.selectAll("rect").data(res);
+        console.log(rects);
+        rects.enter().append("rect")
+          .attr("width", 25)
+          .attr("x", d=>{
+            return 50 + d.distance ;
+          })
+          .attr("y", 0)
+          .attr("height", (d) =>{
+             return yScale(d.height) ;
+          }).attr("fill",(d) => {
+             return d.fill;
+          }) 
+    }); 
+   
+}
+
+
 window.onload = () => {
   //  fillStartSvg();
   clickDemo();
+  barChart();
 };
