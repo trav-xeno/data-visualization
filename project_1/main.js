@@ -1,3 +1,5 @@
+//test server command python -m http.server
+
 //for now global in future it will be from DB
 let count = 1;
 document.getElementById("btn").addEventListener("click", () => {
@@ -119,7 +121,6 @@ const barChart = () => {
 
     d3.json("barData.json").then( res => {
         const rects =  svg.selectAll("rect").data(res);
-        console.log(rects);
         rects.enter().append("rect")
           .attr("width", 25)
           .attr("x", d=>{
@@ -134,6 +135,47 @@ const barChart = () => {
     }); 
    
 }
+
+
+
+window.onload = () => {
+  //  fillStartSvg();
+  clickDemo();  
+  barChart();
+  //below are hackerrank solutions  Iamde 
+  //Testing();
+  //deepdive();
+}
+
+/*
+const deepdive = () =>{
+  let serise = []
+  let max = 0;
+  let n = 10;
+  let k = 8 ; 
+  for(let i = 2 ; i <= n ; i++){
+    serise.push(i)
+  }
+  let b = serise[0];
+  serise = serise.slice(1);
+  for(let a = 1 ; a <= n; a++ ){
+      while(a < b){
+        let bit = a&b;
+        if( bit < k && bit >max  ){
+          max = bit;
+        }
+        if( b+1 > n){
+          b = serise[0];
+          serise = serise.slice(1);
+          break;
+        }else{
+          b = b+1
+        } 
+    }  
+  }
+console.log(max);
+};
+
 
 const Testing = () => {
 // hackerRank answer 
@@ -2165,39 +2207,4 @@ const getMaxLessThanK= (n , k) => {
     }  
   }
   return max;
-}
-const deepdive = () =>{
-  let serise = []
-  let max = 0;
-  let n = 10;
-  let k = 8 ; 
-  for(let i = 2 ; i <= n ; i++){
-    serise.push(i)
-  }
-  let b = serise[0];
-  serise = serise.slice(1);
-  for(let a = 1 ; a <= n; a++ ){
-      while(a < b){
-        let bit = a&b;
-        if( bit < k && bit >max  ){
-          max = bit;
-        }
-        if( b+1 > n){
-          b = serise[0];
-          serise = serise.slice(1);
-          break;
-        }else{
-          b = b+1
-        } 
-    }  
-  }
-console.log(max);
-};
-
-window.onload = () => {
-  //  fillStartSvg();
-  clickDemo();
-  Testing();
-  //deepdive();
-  //barChart();
-}
+}*/
